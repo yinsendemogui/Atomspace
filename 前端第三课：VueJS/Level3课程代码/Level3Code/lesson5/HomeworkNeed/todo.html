@@ -5,6 +5,7 @@
         <title>ToDo</title>
         <link rel="stylesheet" href="css/semantic.css"  media="screen" title="no title" charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
+        <script type="text/javascript" src="js/vue1.js"></script>
         <style type="text/css">
             body {
             background-color: #FDFDFD;
@@ -23,7 +24,7 @@
             }
         </style>
     </head>
-    <body>
+    <body id="app">
         <div class="ui very padded container">
             <div class="ui text menu">
                 <div class="header item" style="font-size:20px;">
@@ -49,17 +50,22 @@
                     <div class="right floated content">
                         <i class="remove icon"></i>
                     </div>
-                    <p style="font-size:14px;">整理明日计划</p>
+                    <a v-on:click="oneSwitch">
+                        <p style="font-size:14px;" v-if="showone">整理明日计划</p>
+                        <p style="font-size:14px;" v-else><s>整理明日计划</s></p>
+                    </a>
                 </div>
                 <div class="item">
                     <div class="right floated content">
                         <i class="remove icon"></i>
                     </div>
-                    <p style="font-size:14px;">修改Bug</p>
+                    <p style="font-size:14px;"><s>修改Bug</s></p>
                 </div>
-                <div class="item">
+                <div class="item" v-if="show">
                     <div class="right floated content">
-                        <i class="remove icon"></i>
+                        <a href="#" v-on:click="modalSwitch">
+                            <i class="remove icon"></i>
+                        </a>
                     </div>
                     <p style="font-size:14px;"><s>提交全栈课程的作业</s></p>
                 </div>
@@ -67,10 +73,34 @@
                     <div class="right floated content">
                         <i class="remove icon"></i>
                     </div>
-                    <p style="font-size:14px;">分享学习笔记</p>
+                    <p style="font-size:14px;"><s>分享学习笔记</s></p>
                 </div>
             </div>
         </div>
+            <script>
+                var vm = new Vue({
+                    el:"#app",
+                    data:{
+                        show:true,
+                        showone:true,
+                        showtwo:true,
+                        showthree:true,
+                        showfour:true
+
+                    },
+                    methods:{
+                        modalSwitch:function () {
+                            this.show = !this.show
+
+                        },
+                        oneSwitch:function () {
+                            this.showone = !this.showone
+
+                        }
+                    }
+
+                })
+            </script>
 
     </body>
 </html>

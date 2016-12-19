@@ -93,11 +93,10 @@
         <script>
             var vm = new Vue({
                 el:"#app",
-                // context
                 data:{
 
                     modal:{
-                        show:true,
+                        show:true
                     },
                     // context["article"] = article
                     article:{
@@ -118,9 +117,17 @@
 
                     }
                 },
-                ready:function () {
-                    this.modalSwitch()
-                }
+{#                conputed:{#}
+{#                    loadingOrNot:function () {#}
+{#                        if (this.comments.length() == 0):#}
+{##}
+{##}
+{#                    }#}
+{##}
+{#                },#}
+{#                ready:function () {#}
+{#                    this.modalSwitch()#}
+{#                }#}
             })
         </script>
 
